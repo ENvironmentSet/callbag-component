@@ -1,0 +1,1 @@
+export default (input, ...fList) => fList.reduce((last, f) => f(last), input);
