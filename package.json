@@ -1,11 +1,11 @@
 {
-  "name": "reactive-components",
+  "name": "callbag-component",
   "version": "0.0.0",
-  "description": "description",
+  "description": "Web Component Library based on callbag ",
   "index": "index.js",
-  "main": "build/lib/reactive-components.js",
-  "unpkg": "build/dist/reactive-components.js",
-  "module": "build/es/reactive-components.js",
+  "main": "build/lib/callbag-component.js",
+  "unpkg": "build/dist/callbag-component.js",
+  "module": "build/es/callbag-component.js",
   "keywords": [],
   "scripts": {
     "env:development": "cross-env NODE_ENV=development",
@@ -14,18 +14,18 @@
     "build:development": "npm run env:development -- npm run build",
     "build:production": "npm run env:production -- npm run build",
     "clear": "rimraf build",
-    "release": "npm run clear -- npm run build:production -- npm run publish"
+    "release": "npm run clear -- npm run build:production -- npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ENvironmentSet/reactive-components.git"
+    "url": "git+https://github.com/ENvironmentSet/callbag-component.git"
   },
   "author": "ENvironmentSet <herryseo1@gmail.com> (https://github.com/ENvironmentSet)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ENvironmentSet/reactive-components/issues"
+    "url": "https://github.com/ENvironmentSet/callbag-component/issues"
   },
-  "homepage": "https://github.com/ENvironmentSet/reactive-components#readme",
+  "homepage": "https://github.com/ENvironmentSet/callbag-component#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
