@@ -1,6 +1,6 @@
-# reactive-components
+# callbag-component
 
-reactive-components is wrapper of Custom element 1.0 API.
+callbag-component is wrapper of Custom element 1.0 API.
 
 Provides **reactive custom element** via callbag
 
@@ -17,7 +17,7 @@ Provides **reactive custom element** via callbag
 | view$ | takes source of model. returns source of DOM Node, which will replace custom element's children |
 
 ```js
-import { component } from 'reactive-components';
+import { component } from 'callbag-component';
 import fromEvent from 'callbag-from-event';
 
 const myButton = component(
