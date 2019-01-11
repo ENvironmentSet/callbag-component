@@ -10,7 +10,7 @@ export default function component(intentFactory, modelFactory, viewFactory, prel
           if (t === 0) modelTalkback = d;
           if (t === 1 && this._prevModel !== d) {
             this._prevModel = d;
-            model$(2);
+            modelTalkback(2);
             model$ = modelFactory(this._prevModel);
             model$(0, synchronizer);
           }
