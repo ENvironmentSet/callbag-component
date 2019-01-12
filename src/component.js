@@ -1,10 +1,9 @@
 import pipe from 'callbag-pipe';
 
-export default function component(intentFactory, modelFactory, viewFactory, preloadedModel) {
+export default function component(intentFactory, modelFactory, viewFactory) {
   class ReactiveElement extends HTMLElement {
     constructor() {
       super();
-      this._prevModel = preloadedModel;
       this._renderer = pipe(
         intentFactory(this),
         modelFactory,
