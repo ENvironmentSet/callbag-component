@@ -1,31 +1,12 @@
-import { pipe } from './utils';
+import pipe from 'callbag-pipe';
 
-export default function component(intentFactory, modelFactory, viewFactory, preloadedModel) {
+export default function component(intentFactory, modelFactory, viewFactory) {
   class ReactiveElement extends HTMLElement {
     constructor() {
-      const modelInterceptor = modelFactory => (start, sink) => {
-        if (start !== 0) return;
-        let modelTalkback;
-        const synchronizer = (t, d) => {
-          if (t === 0) modelTalkback = d;
-          if (t === 1 && this._prevModel !== d) {
-            this._prevModel = d;
-            modelTalkback(2);
-            model$ = modelFactory(this._prevModel);
-            model$(0, synchronizer);
-          }
-          sink(t, d);
-        };
-        let model$ = modelFactory(this._prevModel);
-
-        model$(0, synchronizer);
-      };
       super();
-      this._prevModel = preloadedModel;
       this._renderer = pipe(
         intentFactory(this),
         modelFactory,
-        modelInterceptor,
         viewFactory,
       );
     }
@@ -40,7 +21,7 @@ export default function component(intentFactory, modelFactory, viewFactory, prel
     }
 
     disconnectedCallback() {
-      console.error('Component is disconnected it render something.');
+      console.error('Component is disconnected before it render something.');
     }
 
     render(children) {

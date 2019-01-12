@@ -8,44 +8,43 @@ Provides **reactive custom element** via callbag
 
 ### Component
 
-#### component(intent$, model$, view$, [preloadedModel])
+#### component(intent$, model$, view$)
 
 | Arguments | Description |
 |-----------|-------------|
 | intent$ | takes DOM element(connected component). returns source of intent |
-| model$ | takes source of intent, previous model(when initialize component, this value will be undefined). returns source of model |
+| model$ | takes source of intent. returns source of model |
 | view$ | takes source of model. returns source of DOM Node, which will replace custom element's children |
 
+Example: 
+
 ```js
-import { component } from 'callbag-component';
+import { component, fromIntent } from 'callbag-component';
 import fromEvent from 'callbag-from-event';
+import map from 'callbag-map';
 
-const myButton = component(
+const Counter = component(
   element => fromEvent(element, 'click'),
-  intent$ => (prevModel = 0) => (start, sink) => {
-    if (start !== 0) return;
-    let unmountHander;
+  fromIntent(prev => prev + 1, 0),
+  map(count => document.createTextNode(`count: ${count}`)),
+);
+```
 
-    intent$(0, (t, d) => {
-      if (t === 0) unmountHander = d;
-      else sink(1, prevModel + 1);
-    });
-    sink(0, unmountHander);
-    sink(1, prevModel);
-  },
-  model$ => (start, sink) => {
-    if (start !== 0) return;
-    let unmountHander;
+#### fromIntent(reducer, preloadedModel)
 
-    model$(0, (t, d) => {
-      if (t === 0) unmountHander = d;
-      else {
-        const textNode = document.createTextNode(`count: ${d}`);
+| Arguments | Description |
+|-----------|-------------|
+| reducer | takes lastly calculated model and lastly produced intent, returns new model |
+| preloadedModel | initial model |
 
-        sink(1, textNode);
-      }
-    });
-    sink(0, unmountHander);
-  },
+```js
+import { component, fromIntent } from 'callbag-component';
+import fromEvent from 'callbag-from-event';
+import map from 'callbag-map';
+
+const Counter = component(
+  element => fromEvent(element, 'click'),
+  fromIntent(prev => prev + 1, 0),
+  map(count => document.createTextNode(`count: ${count}`)),
 );
 ```
