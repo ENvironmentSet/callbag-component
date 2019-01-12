@@ -40,7 +40,7 @@ export default function component(intentFactory, modelFactory, viewFactory, prel
     }
 
     disconnectedCallback() {
-      console.error('Component is disconnected it render something.');
+      console.error('Component is disconnected before it render something.');
     }
 
     render(children) {
