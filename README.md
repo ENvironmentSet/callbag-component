@@ -13,7 +13,7 @@ Provides **reactive custom element** via callbag
 | Arguments | Description |
 |-----------|-------------|
 | intent$ | takes DOM element(connected component). returns source of intent |
-| model$ | takes source of intent, previous model(when initialize component, this value will be undefined). returns source of model |
+| model$ | takes source of intent. returns source of model |
 | view$ | takes source of model. returns source of DOM Node, which will replace custom element's children |
 
 Example: 
