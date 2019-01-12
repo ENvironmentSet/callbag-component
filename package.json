@@ -1,6 +1,6 @@
 {
   "name": "callbag-component",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Web Component Library based on callbag ",
   "index": "index.js",
   "main": "build/lib/callbag-component.js",
